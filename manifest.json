@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "wdym?",
+  "description": "Extension to ask the question 'wdym?'",
+  "version": "1.0.0",
+  "permissions": [
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
