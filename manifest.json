@@ -4,9 +4,15 @@
   "description": "Extension to ask the question 'wdym?'",
   "version": "1.0.0",
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "storage"
   ],
   "background": {
     "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_popup": "dialogue.html"
   }
 }
