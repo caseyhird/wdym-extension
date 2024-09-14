@@ -16,7 +16,7 @@ const model = new ChatGroq({
 const prompt = ChatPromptTemplate.fromMessages([
   [
     "system",
-    `You are a helpful assistant for helping users understand the content of the web page they are viewing.`,
+    `You are a helpful assistant for helping users understand what they are reading.`,
   ],
   ["placeholder", "{chat_history}"],
   ["human", "{input}"],
