@@ -4,14 +4,12 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { RunnableWithMessageHistory } from "@langchain/core/runnables";
 
 const model = new ChatGroq({
-    model: "mixtral-8x7b-32768",
-    temperature: 0,
-    apiKey: process.env.GROQ_API_KEY
-  });
+  model: "mixtral-8x7b-32768",
+  temperature: 0,
+  apiKey: process.env.GROQ_API_KEY
+});
 
-  // TODO: move to typescript
-  // const messageHistories: Record<string, InMemoryChatMessageHistory> = {};
-  const messageHistories = {};
+const messageHistories = {};
 
 const prompt = ChatPromptTemplate.fromMessages([
   [
@@ -37,13 +35,12 @@ const modelWithMessageHistory = new RunnableWithMessageHistory({
 });
 
 export async function sendChatMessage(message, sessionId) {
-    const response = modelWithMessageHistory.invoke({ 
-      input: message, 
-      chat_history: messageHistories[sessionId]
-    }, {
-      "configurable": {"sessionId":sessionId}
-    });
-    // messageHistories[sessionId].addMessages([response]);
-    console.log(response);
-    return (await response).content;
+  const response = modelWithMessageHistory.invoke({ 
+    input: message, 
+    chat_history: messageHistories[sessionId]
+  }, {
+    "configurable": {"sessionId":sessionId}
+  });
+  
+  return (await response).content;
 }
